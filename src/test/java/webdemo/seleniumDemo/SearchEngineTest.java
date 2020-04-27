@@ -65,8 +65,9 @@ public class SearchEngineTest {
 
     @Test
     public void differentClickTypes(){
-        driver.findElement(By.id("search_form_input_homepage")).sendKeys("trojmiasto");
-        driver.findElement(By.id("search_button_homepage")).click();
+        WebElement element = driver.findElement(By.name("q"));
+        element.sendKeys("trojmiasto");
+        element.submit();
         List<WebElement> linkList = driver.findElements(By.tagName("a"));
         //default click
         linkList.get(0).click();
