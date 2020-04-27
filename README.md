@@ -1,0 +1,1 @@
+[![Build Status](https://travis-ci.com/testowanieaplikacjijavaug/laboratorium-10-crazyiwan.svg?branch=master)](https://travis-ci.com/testowanieaplikacjijavaug/laboratorium-10-crazyiwan)
