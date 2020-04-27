@@ -8,12 +8,13 @@ import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
+
 
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
-import static org.hamcrest.MatcherAssert.assertThat;
 import static org.junit.Assert.*;
 
 public class redditTesting {
@@ -21,8 +22,10 @@ public class redditTesting {
 
     @BeforeAll
     public static void setUpDriver(){
-        System.setProperty("webdriver.gecko.driver", "resources/geckodriver.exe");
-        driver = new FirefoxDriver();
+        System.setProperty("webdriver.chrome.driver", "resources/chromedriver");
+        ChromeOptions chromeOptions = new ChromeOptions();
+        chromeOptions.setHeadless(true);
+        driver = new ChromeDriver(chromeOptions);
         // Implicity wait -> max czas na znalezienie elementu na stronie
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
     }
@@ -52,12 +55,13 @@ public class redditTesting {
         assertTrue(linkList.size() > 0);
     }
 
+
     @Test
-    public void test_open_every_link(){
-        List<WebElement> linkList = driver.findElements(By.xpath("//a"));
-        for (WebElement element: linkList){
-            element.click();
-        }
+    public void test_form_fields(){
+        driver.get("https://www.reddit.com/register/");
+        List<WebElement> forms = driver.findElement(By.xpath("//form")).findElements(By.xpath("./*"));
+        assertEquals(3, forms.size());
+
     }
 
 }
