@@ -17,7 +17,7 @@ import java.util.concurrent.TimeUnit;
 
 import static org.junit.Assert.*;
 
-public class redditTesting {
+public class RedditTest {
     private static WebDriver driver;
 
     @BeforeAll
