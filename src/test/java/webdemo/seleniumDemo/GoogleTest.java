@@ -20,7 +20,7 @@ public class GoogleTest {
 
 	@BeforeAll
 	public static void setUpDriver(){
-		System.setProperty("webdriver.gecko.driver", "resources/geckodriver.exe");
+		System.setProperty("webdriver.gecko.driver", "resources/geckodriver");
 		driver = new FirefoxDriver();
 		// Implicity wait -> max czas na znalezienie elementu na stronie
 		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
