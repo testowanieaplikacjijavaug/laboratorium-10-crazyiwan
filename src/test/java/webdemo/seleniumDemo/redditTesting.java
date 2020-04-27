@@ -16,7 +16,7 @@ import java.util.concurrent.TimeUnit;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.junit.Assert.*;
 
-public class wpTesting {
+public class redditTesting {
     private static WebDriver driver;
 
     @BeforeAll

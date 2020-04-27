@@ -34,7 +34,7 @@ public class SearchEngineTest {
 
     @BeforeEach
     public void setUp() throws Exception {
-        driver.get("https://google.pl/");
+        driver.get("https://duckduckgo.com/");
     }
 
     @AfterAll
@@ -45,9 +45,8 @@ public class SearchEngineTest {
     @Test
     public void enterFirstResult(){
 
-        WebElement element = driver.findElement(By.name("q"));
-        element.sendKeys("trojmiasto");
-        element.submit();
+        driver.findElement(By.id("search_form_input_homepage")).sendKeys("trojmiasto");
+        driver.findElement(By.id("search_button_homepage")).click();
         List<WebElement> linkList = driver.findElements(By.tagName("a"));
         linkList.get(0).click();
         assertNotNull(driver.getTitle());
@@ -55,9 +54,8 @@ public class SearchEngineTest {
 
     @Test
     public void enterThirdResult(){
-        WebElement element = driver.findElement(By.name("q"));
-        element.sendKeys("trojmiasto");
-        element.submit();
+        driver.findElement(By.id("search_form_input_homepage")).sendKeys("trojmiasto");
+        driver.findElement(By.id("search_button_homepage")).click();
         List<WebElement> linkList = driver.findElements(By.className("result__a"));
         linkList.get(2).click();
         assertNotNull(driver.getTitle());
@@ -65,10 +63,9 @@ public class SearchEngineTest {
 
     @Test
     public void differentClickTypes(){
-        WebElement element = driver.findElement(By.name("q"));
-        element.sendKeys("trojmiasto");
-        element.submit();
-        List<WebElement> linkList = driver.findElements(By.tagName("a"));
+        driver.findElement(By.id("search_form_input_homepage")).sendKeys("trojmiasto");
+        driver.findElement(By.id("search_button_homepage")).click();
+        List<WebElement> linkList = driver.findElements(By.className("result__a"));
         //default click
         linkList.get(0).click();
         JavascriptExecutor js = (JavascriptExecutor) driver;
